@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beards Code</title>
+    <link rel="shortcut icon" href="/images/beard2.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="index.css">
+    
+</head>
+<body>
+    <div class="main-container">
+        <div class="header">
+            <div class="logo">
+                <img src="beard2.jpg" class="logo-image" style="margin-bottom: 10px;">
+            </div>
+    
+            <div class="navs">
+                <a href="#" class="signin">sign in</a>
+                <a href="#" class="get-started">Get started</a>
+            </div>
+        </div>
+
+       <!-- defining the header flap and easy navs followed-->
+       <div class="header-flap">
+         
+        <div class="header-flap-logo">
+               <div class="header-flap-title">
+                <img src="beard2.jpg" class="header-flap-image">
+                  <div class="title">
+                    <h2>Beards Code</h2>
+                    <span>from absolute zero to hero</span>
+                  </div>
+               </div>
+           </div>
+
+          <div class="easy-navs">
+           <div class="ease-navs-navs">
+            <ul>
+                <li><a href="#">html 5</a></li>
+                <li><a href="#">css 3</a></li>
+                <li><a href="#">Javascript</a></li>
+            </ul>
+           </div>
+
+           <div class="social-navs">
+               <ul>
+                   <li><a href="#"><img src="search.png" style="width: 16px; margin-top: 3px;"></a></li>
+                   <li><a href="#"><img src="facebook.png" style="width: 20px;border-radius: 15px; margin-top: 1px;"></a></li>
+                   <li><a href="#"><img src="x-twitter-app-icon-with-gray-color-vector-49023712.jpg" style="width: 17px; margin-top: 2px;"></a></li>
+                   <li><a href="#"><img src="instagram1.jpg" style="width: 21px; border-radius: 20px; margin-left: -5px;"></a></li>
+
+                   <a href="#" class="follow">follow</a>
+               </ul>
+           </div>
+          </div>
+           <hr class="top-line">
+       </div>
+
+       <!-- defining the main container of the web page-->
+
+       <div class="main">
+            <div id="image-container">
+                <img src="" id="images-slides">
+            </div>
+                    <div id="pagination">
+                        <button id="dy+">&laquo;</button>
+                        <button id="dx-">&raquo;</button>
+                    </div>
+
+           
+       </div>
+    </div>
+           <div class="eye-catching">
+               <div class="one"></div>
+               <div class="two">
+                   <h4>About Us</h4>
+                   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Cum quod modi explicabo incidunt similique nobis culpa, 
+                        ea asperiores nostrum aliquam laboriosam,
+                         consectetur veritatis. 
+                       Eos quo rerum sapiente reprehenderit distinctio sunt.</p>
+                       <button>Join</button>
+               </div>
+           </div>
+           <div class="signin-form">
+            <form id="form" action="profile.html">
+              <label for="fName"></label>
+              <input type="text" id="fName" class="firstName" placeholder="first name">
+              <div class="toggle1">
+                <div class="toggle-button1"></div>
+              </div>
+              <label for="lName"></label>
+              <input type="text" id="lName" class="lastName" placeholder="last name">
+              <div class="toggle2">
+                <div class="toggle-button2"></div>
+              </div>
+              <label for="email"></label>
+              <input type="email" id="email" placeholder="email">
+              <div class="toggle4">
+                <div class="toggle-button4"></div>
+              </div>
+              <label for="pass"></label>
+              <input type="password" id="pass" placeholder="password">
+              <div class="toggle3">
+                <div class="toggle-button3"></div>
+              </div>
+              <label for="secondPass"></label>
+              <input type="password" id="secondPass" placeholder="re-type password">
+              <div class="toggle3">
+                <div class="toggle-button3"></div>
+              </div>
+              <label>
+                <input type="submit" value="submit">
+              </label>
+            </form>
+          </div>
+    <div class="footer"></div>
+    <script>
+var imageContainer = document.getElementById("image-container")
+var incrementButton = document.getElementById("dy+")
+var decrementButton = document.getElementById("dx-")
+const imageData = document.getElementById("images-slides")
+var currentIndex = 0
+
+
+  const images =[ 
+      {
+      image : "html.png"
+    }, 
+    {
+      image : "css.png"
+    },
+    {
+      image : "Javascript-logo.png",
+    },
+    ]
+    // imageData.src = images[currentIndex].image1
+     displayImage()
+    function displayImage() {
+        imageData.src = images[currentIndex].image
+    }
+
+    incrementButton.addEventListener('click', ()=>{
+        currentIndex++
+        if ( currentIndex >= images.length) {
+            currentIndex = 0
+        }
+        displayImage()
+        
+    })
+
+    decrementButton.addEventListener('click', ()=>{
+        currentIndex--
+        if (currentIndex < 0 ) {
+            currentIndex = images.length - 1
+        }
+        displayImage()
+    })
+
+    var timer = 2 
+    setInterval(()=>{
+        
+       timer--
+        if (timer <= 0 ) {
+            currentIndex++
+             if ( currentIndex >= images.length) {
+            currentIndex = 0
+        }
+        displayImage()
+        }
+    }, 3000)
+    </script>
+<script src="node.js"></script>
+</body>
+</html>
