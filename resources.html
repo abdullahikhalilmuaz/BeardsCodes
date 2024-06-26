@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docs</title>
+    <link rel="shortcut icon" href="beard2.jpg" type="image/x-icon">
+    <style>* {
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+    }
+    
+    .header {
+        position: fixed;
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: 60px;
+        padding: 0px 20px 0px 20px;
+        background-color: white;
+        border-bottom: .1px solid rgb(236, 236, 236);
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .header-flap {
+        position: fixed;
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: 60px;
+        padding: 0px 20px 0px 20px;
+        margin-top: 60px;
+    }
+    
+    .header img {
+        width: 45px;
+        box-shadow: 0px 0px 8px rgba(0,0,0,.1);
+        border-radius: 50%;
+        margin: 12px 0;
+    }
+    
+    .header .navs {
+        width: 150px;
+        margin: 0px 30px 0px 0;
+        justify-content: space-between;
+        height: 10px;
+    }
+    .navs a {
+        text-decoration: none;
+    }
+    
+    .navs a:first-of-type {
+        color: #00aa6d;
+        height: 10px;
+        transition: .3s;
+    }
+    
+    .navs a:first-of-type:hover {
+        letter-spacing: 1px;
+        font-weight: bolder;
+    }
+    
+    
+    .navs a.get-started{
+        text-decoration: none;
+        color: #00aa6d;
+        font-size: 12px;
+        border: 1px solid;
+        text-align: center;
+        line-height: 8px;
+        height: 10px;
+        padding: 6px 10px;
+        border-radius: 50px;
+        transition: .3s;
+        margin: 0px 5px;
+    }
+    
+    .navs a.get-started:hover {
+        background-color: #00aa6d;
+        color: #fff;
+        border: none;
+    }
+    
+    
+    .side-nav {
+        position: fixed;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        margin: 120px;
+        margin-left : -100%;
+        z-index: 1;
+        transition: .6s ease-in-out;
+    }
+    
+    .side-nav.active {
+        margin-top: 120px;
+        margin-left: 0;
+    }
+    
+    
+    .side-nav ul {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        text-align: justify;
+    }
+    
+    .side-nav ul li {
+        padding: 14px 16px;
+        /* margin: 20px 0; */
+        border-bottom: 1px solid #ddd;
+        transition: .2s;
+    }
+    
+    .side-nav ul li:hover {
+        background-color: #ebe9e9;
+    }
+    
+    .side-nav ul li a{
+        color: rgb(44, 43, 43);
+        margin: 0px 30px;
+        font-weight: 600;
+        text-decoration: none;
+    }
+    
+    
+    
+    
+    
+    .header-flap  .menu {
+        width: 33px;
+        height: 29px;
+        margin: 4px 10px;
+        border-radius: 3px;
+        padding: 3px 5px;
+        cursor: pointer;
+        transition: .4s;
+    }
+    
+    .menu .one, .two , .three {
+        width: 25px;
+        height: 4px;
+        background-color: rgb(37, 36, 36);
+        margin-top: 3px;
+        border-radius: 10px;
+        transition: .3s;
+    }
+    
+    .menu .one.active {
+        transform: rotate(34deg);
+        background-color: red;
+    }
+    
+    .menu .three.active {
+        margin-top: -4.4px;
+        background-color: red;
+        transform: rotate(-40deg);
+    }
+    
+    .menu .two.active {
+        display: none;
+    }
+    
+    
+    
+    /* styling the main content */
+    
+    .main-content {
+       position: fixed;
+       display: flex;
+       flex-direction: column;
+       width: 100%;
+       height: 81.4%;
+       margin: 122px 0;
+       overflow: auto;
+       padding: 20px 30px 20px 30px;
+       box-sizing: border-box;
+    }
+    
+    .main-content::-webkit-scrollbar {
+        width: 5px;
+    }
+    
+    .main-content::-webkit-scrollbar-thumb {
+        background-color: #00aa6d;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+    
+    .main-content h2 {
+        font-family: sans-serif;
+        text-align: center;
+        font-weight: 500;
+        color: rgb(59, 59, 59);
+    }
+    
+    .main-content .table-content h4{
+        text-align: center;
+        margin: 5px 5px;
+        font-family: sans-serif;
+        letter-spacing: 1px;
+        color: rgb(59, 59, 59);
+    }
+    
+    .table-content ul {
+        margin: 30px 30px;
+    }
+    
+    .table-content ul li{
+        font-size: 14px;
+        font-family: sans-serif;
+        letter-spacing: .1px;
+        margin: 10px 0;
+    }
+    
+    .intro {
+        color: rgb(49, 49, 49);
+        text-align: left;
+        font-size: 13px;
+        margin: 20px 0px;
+    }
+    
+    .lists li{
+        margin: 15px 0;
+    }
+    
+    #code-container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+        padding: 20px 20px;
+        box-sizing: border-box;
+        box-shadow: 0px 0px 8px rgba(0,0,0,.4);
+        border-radius: 10px;
+    }
+    
+    #code-container p {
+        font-size: 13px;
+        color: rgb(54, 54, 54);
+        margin: 0px 0px 20px 0px;
+    }
+    
+    #code-container code {
+        font-size: 12px;
+        letter-spacing: 1px;
+        color: rgb(163, 72, 72);
+        text-align: justify;
+        font-family: sans-serif;
+        line-height: 20px;
+    }
+    
+    #code-container .details {
+        font-size: 13px;
+        box-shadow: 0px 0px 8px rgba(0,0,0,.4);
+        width: 170px;
+        height: auto;
+        padding: 5px 10px;
+        border-radius: 10px;
+        margin-top: 20px;
+        transition: .3s ease-out;
+    }
+    
+    .copy-details {
+        display: none;
+        color: #02cc82;
+        transition: .3s ease-out;
+    }
+    .copy-details.active {
+        display: flex;
+        transition: .3s ease-out;
+    }
+    .details .edit {
+        display: none;
+        font-size: 11px;
+        text-decoration: none;
+        background-color: #434547;
+        text-align: center;
+        color: white;
+        padding: 3px 2px;
+        border-radius: 3px;
+        margin-top: -2px;
+        cursor: pointer;
+        margin-left: 5px;
+        font-weight: 300;
+        transition: .3s ease-out;
+    }
+    
+    .details .edit.active {
+        display: flex;
+        transition: .3s ease-out;
+    }
+    
+    .explained {
+        font-size: 13px;
+    }
+    
+    .explained p {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .explained ul li {
+        margin: 15px 0;
+        line-height: 20px;
+    }</style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <img src="beard2.jpg" class="logo-image" style="margin-bottom: 10px;">
+        </div>
+    
+        <div class="navs">
+            <a href="#" class="signin">sign in</a>
+            <a href="#" class="get-started" class="start">Get started</a>
+        </div>
+    </div>
+    
+    <div class="header-flap">
+                <div class="menu" onclick="showIt()">
+                    <div class="one"></div>
+                    <div class="two"></div>
+                    <div class="three"></div>
+                </div>
+                <div class="title">
+                    <h3>Beards Code</h3>
+                    <span>from absolute zero to hero</span>
+                </div>
+            </div>
+    </div>
+    <div class="side-nav">
+        <ul>
+            <li><a href="index.html">home</a></li>
+            <li><a href="profile.html">profile</a></li>
+            <li><a href="editor.html">code editor</a></li>
+            <li><a href="resources.html">resources</a></li>
+            <li><a href="#">about</a></li>
+            <li><a href="#">contact us</a></li>
+            <li><a href="#">logout</a></li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <h2>HTML Tutorial Beards Code</h2>
+        <img src="beard2.jpg" style="width: 100px; margin: 0px auto;">
+        
+        <div class="table-content">
+            <h4>Html Table of Content</h4>
+            <ul>
+                <li style="color: rgb(49, 49, 49);">Introduction to HTML
+                    <ul>
+                        <li>Introduction</li>
+                        <li>Basic structure of an HTML document</li>
+                    </ul>
+                </li>
+
+                <li>HTML Basics Elements
+                    <ul>
+                        <li>Headings (h1-h6)</li>
+                        <li>Paragraphs (p)</li>
+                        <li>Links (a)</li>
+                        <li>Images</li>
+                        <li>Lists (ul , ol , li)</li>
+                        <li>Emphasis (b , i , u)</li>
+                        <li>Line breaks (br)</li>
+                        <li>Horizontal rule (hr)</li>
+                    </ul>
+                </li>
+                <li>Tags</li>
+                <li>Tables
+                    <ul>
+                        <li>Table strucure (table, tr , td)</li>
+                        <li>Table attribute (cellpadding , cellspacing)</li>
+                    </ul>
+                </li>
+                <li>HTML Advanced Concepts
+                    <ul>
+                        <li>HTML entities</li>
+                        <li>HTML comments</li>
+                        <li>HTML conditional comments</li>
+                        <li>HTML meta tags</li>
+                    </ul>
+                </li>
+                <li>HTML Multimedia 
+                    <ul>
+                        <li>Audio and video elements (audio , video)</li>
+                    </ul>
+                </li>
+                <li>Building a simple Webpage 
+                    <ul>
+                        <li>Putting it together</li>
+                    </ul>
+                </li>
+                <li>Final Project
+                    <ul>
+                        <li>Creating a personal webpage or project</li>
+                    </ul>
+                </li>
+                <li>HTML Online Quiz</li>
+                <li>HTML Examples</li>
+                <li>HTML Interview Questions</li>
+                <li>HTML Cheatsheets</li>
+            </ul>
+        </div>
+        <div class="goes-here">
+            <h3 class="intro">Introduction:</h3>
+            <p style="font-size: 13px; margin: 10px 0px;">HTML is the standard markup language for creating web pages.</p>
+
+            <h4 style="margin: 0px 0px 15px 0px; color: rgb(44, 43, 43);">What is HTML ?</h4>
+            <p>
+                <ul style="font-size: 13px;" class="lists">
+                   <li>HTML stands fo Hyper Text Mark Language</li>
+                   <li>HTML is the standard markup language for creating wep pages </li>
+                   <li>HTML describes the structure of a web page</li>
+                   <li>HTML consists of a series of elements</li>
+                   <li>HTML elements tell the browser how to display the content </li>
+                   <li>HTML elements lebel pieces of content such as "this is a heading " , " this is a paragrah" , "this is a link", e.t.c </li>
+                </ul>
+            </p>
+            <h4 class="intro">A Simple HTML Document</h4>
+            <div id="code-container">
+                <p>Example</p>
+                <div id="code">
+                    <code class="code">
+                        &lt;!Doctype html&gt;
+                        <br>
+                        &lt;html&gt;
+                        &lt;head&gt;
+                        <br>
+                        &lt;title&gt;
+                        Page Title
+                        &lt;/title&gt;
+                        <br>
+                        &lt;/head&gt;
+                        <br>
+                        &lt;body&gt; <br>
+                            &lt;h1&gt; My first Heading&lt;h1&gt;
+                            <br>
+                            &lt;p&gt; My first Paragraph&lt;p&gt; <br>
+                        &lt;/body&gt;
+                        <br>
+                        &lt;/html&gt;
+                    </code>
+                    </code>
+                   <div class="details">
+                    <img src="copy.jpg"class="copy" style="width: 22px; cursor: pointer;" id="copy">
+                    <div class="copy-details">
+                        copied successfuly! <br>
+                        <a href="editor.html" class="edit">Editor ?</a>
+                    </div>
+                </div>         
+              </div>
+            </div>
+            <div class="explained">
+                <p>Example Explained</p>
+                <ul>
+                    <li>The   &lt;!Doctype html&gt; declaraton 
+                        defines that this document is an HTML5 
+                        document.
+                    </li>
+                    
+                    <li>The &lt;html&gt; element is the root of 
+                        an HTML page.
+                    </li>
+    
+                    <li>The &lt;head&gt; element contains meta information 
+                        about the HTML page (which is shown in browser's totle
+                        bar or in the page's tab).
+                    </li>
+                    
+                    <li>
+                        The &lt;body&gt; element defines the document's body 
+    and is  container for all the visible contents such as headings, 
+    paragraphs , images , hyperlinks , tables , lists e.t.c.
+                    </li>
+    
+                    <li>The &lt;h1&gt; element defines a large heading</li>
+                    <li>The &lt;p&gt; element defines a paragraph</li>
+                </ul>
+
+                <h3 class="intro">Basics Elements:</h3>
+                <ul>
+                    <li>Headings (h1-h6)</li>
+                    <li>Paragraphs (p)</li>
+                    <li> Links (a)</li>
+                    <li>Images</li>
+                    <li>Lists (ul , ol , li)</li>
+                    <li>Emphasis (b , i , u)</li>
+                    <li>Line breaks (br)</li>
+                    <li>Horizontal rule (hr)</li>
+                </ul>
+
+                <div class="wrap-details" style="margin-top: 50px;">
+                    <h3>Headings (h1-h6)</h3>
+                    <p>HTML headings are defined with the &lt;h1&gt; to &lt;h6&gt; tags</p>
+                    <p>&lt;h1&gt; defines the most important heading ,
+                        &lt;h6&gt; defines the least important heading.
+                    </p> 
+                   </div>
+         
+                <div id="code-container">
+                    <p>Example</p>
+                    <div id="code">
+                        <code class="code">
+                            &lt;!Doctype html&gt;
+                            <br>
+                            &lt;html&gt;
+                            &lt;head&gt;
+                            <br>
+                            &lt;title&gt;
+                            Page Title
+                            &lt;/title&gt;
+                            <br>
+                            &lt;/head&gt;
+                            <br>
+                            &lt;body&gt; <br>
+                                &lt;h1&gt;Heading 1&lt;h1&gt;
+                                <br>
+                                &lt;h2&gt;Heading 2&lt;h2&gt;
+                                <br>
+                                &lt;h3&gt;Heading 3&lt;h3&gt;
+                                <br>
+                                &lt;h4&gt;Heading 4&lt;h4&gt;
+                                <br>
+                                &lt;h5&gt;Heading 5&lt;h5&gt;
+                                <br>
+                                &lt;h6&gt;Heading 6&lt;h6&gt;
+                            &lt;/body&gt;
+                            <br>
+                            &lt;/html&gt;
+                        </code>
+                        </code>
+                       <div class="details">
+                        <img src="copy.jpg"class="copy" style="width: 22px; cursor: pointer;" id="copy">
+                        <div class="copy-details">
+                            copied successfuly! <br>
+                            <a href="editor.html" class="edit">Editor ?</a>
+                        </div>
+                    </div>         
+                  </div>
+                </div>
+
+
+                <div class="wrap-details" style="margin-top: 50px;">
+                    <h3>Links</h3>
+                    <p>A time might come when you are building a website and you wanted to create a link to your social media account as an about , and here comes the HTML Links to help you achieve that.</p>
+                    <p>HTML Links are defined with the &lt;a&gt;&lt;/a&gt; tags</p>
+                    <p> followed by attribute <i style="color: red;">href=""</i> inside the &lt;a&gt; tag , 
+                    </p> 
+                    <p>the <i style="color: red;">href</i> attribute is where you are going to paste or write the link you want or the user to visit</p>
+                    <p><b>Example : </b>
+                    </p>
+                    <span style="margin: -10px 0 20px 0;">Copy paste in the web Editor , <i>located in the Nav Bar.</i></span>
+                   </div>               
+     
+         
+                <div id="code-container" style="margin-top: 20px;">
+                    <p>Example</p>
+                    <div id="code">
+                        <code class="code">
+                            &lt;!Doctype html&gt;
+                            <br>
+                            &lt;html&gt;
+                            &lt;head&gt;
+                            <br>
+                            &lt;title&gt;
+                            Page Title
+                            &lt;/title&gt;
+                            <br>
+                            &lt;/head&gt;
+                            <br>
+                            &lt;body&gt; <br>
+                                &lt;a href="https://www.google.com"&gt;Google&lt;/a&gt;
+                                <br>
+                            &lt;/body&gt;
+                            <br>
+                            &lt;/html&gt;
+                        </code>
+                        </code>
+                       <div class="details">
+                        <img src="copy.jpg"class="copy" style="width: 22px; cursor: pointer;" id="copy">
+                        <div class="copy-details">
+                            copied successfuly! <br>
+                            <a href="editor.html" class="edit">Editor ?</a>
+                        </div>
+                    </div>         
+                  </div>
+                </div>
+
+                
+                <div class="wrap-details" style="margin-top: 50px;">
+                    <h3>Images</h3>
+                    <p>Images can improve the design and the apprearance of a web page .</p>
+                    <img src="beard2.jpg" style="width: 100px; margin: 20px auto; text-align: center;; align-self: center; justify-self: center; align-items: center; box-shadow: 0px 0px 8px rgba(0,0,0,.2); border-radius: 5px;"/>
+                    <p>HTML Image syntax <br>  
+                        The HTML &lt;img&gt; tags is used to embed an image in a web page.</p>
+                        <p>Images are not technically inserted into a wb page ; images are linked to web pages. the &lt;img&gt; tag creates a holding space for the references image.</p>
+                        <p>The &lt;img&gt; tag is empty , it contains attributes only , and does not have a closing tag.</p>
+                    <p> The &lt;img&gt; tag has two required attributes : <br>
+                        <ul>
+                            <li>src = Specifies the path to the image</li>
+                            <li>alt (optional) = Specifies the alternate text for the image , incase the image did'nt load , the user will se alternate text instead , sound funny ha ??, absolutely let's see an example</li>
+                        </ul>
+                    </p> 
+                    <p>Syntax : <br>
+                        &lt;img <i style="color: red;">src="url"</i> <i style="color: red;">alt="alternatetext"</i>&gt;
+                    </p>
+                   <br>
+                    <p><b>Example : </b>
+                    </p>
+                    <span style="margin: -10px 0 20px 0;">Copy paste in the web Editor , <i>located in the Nav Bar.</i></span>
+                   </div>               
+     
+         
+                <div id="code-container" style="margin-top: 20px;">
+                    <p>Example</p>
+                    <div id="code">
+                        <code class="code">
+                            &lt;!Doctype html&gt;
+                            <br>
+                            &lt;html&gt;
+                            &lt;head&gt;
+                            <br>
+                            &lt;title&gt;
+                            Page Title
+                            &lt;/title&gt;
+                            <br>
+                            &lt;/head&gt;
+                            <br>
+                            &lt;body&gt; <br>
+                                &lt;img src="image.png" alt="Cofee Image"&gt;
+                                <br>
+                            &lt;/body&gt;
+                            <br>
+                            &lt;/html&gt;
+                        </code>
+                        </code>
+                       <div class="details">
+                        <img src="copy.jpg"class="copy" style="width: 22px; cursor: pointer;" id="copy">
+                        <div class="copy-details">
+                            copied successfuly! <br>
+                            <a href="editor.html" class="edit">Editor ?</a>
+                        </div>
+                    </div>         
+                  </div>
+                </div>
+
+                <div class="wrap-details" style="margin-top: 50px;">
+                    <h4>Image Size - Width and Height</h4>
+                    <p>You can use the <i style="color: red;">style</i> attribute to specify the width and the height of an image , e.g : </p>
+                   </div>  
+
+                   <div id="code">
+                    <code class="code">
+                        &lt;!Doctype html&gt;
+                        <br>
+                        &lt;html&gt;
+                        &lt;head&gt;
+                        <br>
+                        &lt;title&gt;
+                        Page Title
+                        &lt;/title&gt;
+                        <br>
+                        &lt;/head&gt;
+                        <br>
+                        &lt;body&gt; <br>
+                            &lt;img src="image.png" alt="Cofee Image" style="width: 300px; height: 150px;"&gt;
+                            <br>
+                        &lt;/body&gt;
+                        <br>
+                        &lt;/html&gt;
+                    </code>
+                    </code>
+                   <div class="details">
+                    <img src="copy.jpg"class="copy" style="width: 22px; cursor: pointer;" id="copy">
+                    <div class="copy-details">
+                        copied successfuly! <br>
+                        <a href="editor.html" class="edit">Editor ?</a>
+                    </div>
+                </div>         
+              </div>
+            </div>
+
+              
+
+              <h4>OR</h4>
+
+              <div id="code">
+                <code class="code">
+                    &lt;!Doctype html&gt;
+                    <br>
+                    &lt;html&gt;
+                    &lt;head&gt;
+                    <br>
+                    &lt;title&gt;
+                    Page Title
+                    &lt;/title&gt;
+                    <br>
+                    &lt;/head&gt;
+                    <br>
+                    &lt;body&gt; <br>
+                        &lt;img src="image.png" alt="Cofee Image" width="200px; height="150px;&gt;
+                        <br>
+                    &lt;/body&gt;
+                    <br>
+                    &lt;/html&gt;
+                </code>
+                </code>
+               <div class="details">
+                <img src="copy.jpg"class="copy" style="width: 22px; cursor: pointer;" id="copy">
+                <div class="copy-details">
+                    copied successfuly! <br>
+                    <a href="editor.html" class="edit">Editor ?</a>
+                </div>
+            </div>         
+          </div>
+
+           
+        </div>
+
+        <p>But i'd recommend you style the image in the style to prevent styles sheets from changing the size of images. e.g : </p>
+
+        <div id="code">
+            <code class="code">
+                &lt;!Doctype html&gt;
+                <br>
+                &lt;html&gt;
+                &lt;head&gt;
+                <br>
+                &lt;title&gt;
+                Page Title
+                &lt;/title&gt;
+                &lt;style&gt;
+                    img {
+                        width : 200px;
+                        height : 150px;
+                    }
+                &lt;/style&gt;
+                <br>
+                &lt;/head&gt;
+                <br>
+                &lt;body&gt; <br>
+                    &lt;img src="image.png" alt="Cofee Image"&gt;
+                    <br>
+                &lt;/body&gt;
+                <br>
+                &lt;/html&gt;
+            </code>
+            </code>
+           <div class="details">
+            <img src="copy.jpg"class="copy" style="width: 22px; cursor: pointer;" id="copy">
+            <div class="copy-details">
+                copied successfuly! <br>
+                <a href="editor.html" class="edit">Editor ?</a>
+            </div>
+        </div>         
+      </div>
+
+     
+            </div>
+
+            </div>
+        </div>
+    </div>
+  
+<script>
+   
+   var code = Array.from(document.querySelectorAll(".code"));
+  var copy = Array.from(document.querySelectorAll(".copy"));
+  code.forEach((element, index) => {
+    copy[index].addEventListener("click", ()=> {
+      navigator.clipboard.writeText(element.textContent)
+      alert ("Copied successfully!")
+      var copyDetails = Array.from(document.querySelectorAll(".copy-details"))
+      copyDetails.classList.remove('active')
+      var editor = Array.from(document.querySelectorAll(".copy-details"))
+      copyDetails.classList.remove('active')
+    })
+  });
+function showIt() {
+    var one = document.querySelector(".one")
+    var two = document.querySelector(".two")
+    var three = document.querySelector(".three")
+    document.querySelector(".side-nav").classList.toggle('active')
+
+    one.classList.toggle('active')
+    two.classList.toggle('active')
+    three.classList.toggle('active')
+}
+
+
+var code = Array.from(document.querySelectorAll(".code"));
+  var copy = Array.from(document.querySelectorAll(".copy"));
+  code.forEach((element, index) => {
+    copy[index].addEventListener("click", ()=> {
+      navigator.clipboard.writeText(element.textContent)
+      alert ("Copied successfully!")
+      var copyDetails = Array.from(document.querySelectorAll(".copy-details"))
+      copyDetails.classList.remove('active')
+      var editor = Array.from(document.querySelectorAll(".copy-details"))
+      copyDetails.classList.remove('active')
+    })
+  });
+</script>
+</body>
+</html>

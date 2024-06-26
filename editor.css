@@ -1,0 +1,276 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 60px;
+    padding: 0px 20px 0px 20px;
+    background-color: white;
+    border-bottom: .1px solid rgb(236, 236, 236);
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-flap {
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 60px;
+    padding: 0px 20px 0px 20px;
+    margin-top: 60px;
+}
+
+.header img {
+    width: 45px;
+    box-shadow: 0px 0px 8px rgba(0,0,0,.1);
+    border-radius: 50%;
+    margin: 12px 0;
+}
+
+.header .navs {
+    width: 150px;
+    margin: 0px 30px 0px 0;
+    justify-content: space-between;
+    height: 10px;
+}
+.navs a {
+    text-decoration: none;
+}
+
+.navs a:first-of-type {
+    color: #00aa6d;
+    height: 10px;
+    transition: .3s;
+}
+
+.navs a:first-of-type:hover {
+    letter-spacing: 1px;
+    font-weight: bolder;
+}
+
+
+.navs a.get-started{
+    text-decoration: none;
+    color: #00aa6d;
+    font-size: 12px;
+    border: 1px solid;
+    text-align: center;
+    line-height: 8px;
+    height: 10px;
+    padding: 6px 10px;
+    border-radius: 50px;
+    transition: .3s;
+    margin: 0px 5px;
+}
+
+.navs a.get-started:hover {
+    background-color: #00aa6d;
+    color: #fff;
+    border: none;
+}
+
+
+.side-nav {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    margin: 120px;
+    margin-left : -100%;
+    z-index: 1;
+    transition: .6s ease-in-out;
+}
+
+.side-nav.active {
+    margin-top: 120px;
+    margin-left: 0;
+}
+
+
+.side-nav ul {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: justify;
+}
+
+.side-nav ul li {
+    padding: 14px 16px;
+    /* margin: 20px 0; */
+    border-bottom: 1px solid #ddd;
+    transition: .2s;
+}
+
+.side-nav ul li:hover {
+    background-color: #ebe9e9;
+}
+
+.side-nav ul li a{
+    color: rgb(44, 43, 43);
+    margin: 0px 30px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+
+
+
+
+.header-flap  .menu {
+    width: 33px;
+    height: 29px;
+    margin: 4px 10px;
+    border-radius: 3px;
+    padding: 3px 5px;
+    cursor: pointer;
+    transition: .4s;
+}
+
+.menu .one, .two , .three {
+    width: 25px;
+    height: 4px;
+    background-color: rgb(37, 36, 36);
+    margin-top: 3px;
+    border-radius: 10px;
+    transition: .3s;
+}
+
+.menu .one.active {
+    transform: rotate(34deg);
+    background-color: red;
+}
+
+.menu .three.active {
+    margin-top: -4.4px;
+    background-color: red;
+    transform: rotate(-40deg);
+}
+
+.menu .two.active {
+    display: none;
+}
+
+
+
+
+.editor {
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    margin: 120px 0;
+    z-index: -1;
+}
+
+.editor .code , .output {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0px 0px 8px rgba(0,0,0,.3);
+}
+
+.code {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: rgb(250, 242, 242);
+}
+
+.code textarea {
+    width: 100%;
+    height: 70%;
+    background-color: transparent;
+    margin: 10px 0;
+    box-shadow: 0px 0px 20px rgba(0,0,0,.1);
+    padding: 10px 10px;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+.code textarea::-webkit-scrollbar {
+    width: 4px;
+}
+
+.code textarea::-webkit-scrollbar-thumb {
+    background-color: #ff0800;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.code button {
+    border: none;
+    width: 100px;
+    height: 35px;
+    max-width: 100px;
+    border-radius: 5px;
+    background-color: #ff0800;
+    color: white;
+    margin-top: 10px;
+    margin-left: 70%;
+    cursor: pointer;
+    transition: .1s ease-in-out;
+}
+
+.code button:hover {
+    background-color: rgb(255, 94, 0);
+    transform: scale(1.1);
+}
+.output {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: rgb(250, 242, 242);
+}
+
+.output #code-review {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    height: 100%;
+    background-color: rgb(218, 15, 15);
+    overflow: auto;
+    font-size: 13px;
+}
+
+.output #code-review::-webkit-scrollbar {
+    width: 4px;
+}
+
+.output #code-review::-webkit-scrollbar-thumb {
+    background-color: red;
+}
+
+
+
+@media only screen and (max-width : 650px) {
+    .editor {
+        display: flex;
+        flex-direction: column;
+    }
+    .editor .code {
+        padding: 10px 20px;
+        box-sizing: border-box;
+        height: 55%;
+        margin: 0;
+    }
+
+    
+.output {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: rgb(250, 242, 242);
+}   
+
+}
